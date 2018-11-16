@@ -16,7 +16,7 @@
             <h2>Fill all the details mentioned below for the SignUp..!!</h2>  
           First Name : <input type="test" name="fname" >
           <br><br>
-          Last Name : <input type="test" name="fname" >
+          Last Name : <input type="test" name="lname" >
           <br><br>
           Username : <input type="test" name="username" >
           <br><br>
