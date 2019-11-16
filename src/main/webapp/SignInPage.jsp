@@ -14,7 +14,7 @@
     <body>
         <h1>Type correct Username and Password..!!</h1><br><br>
         <form action="WelcomePage" method="post">
-       Username : <input type="test" name="username" >
+       Fullname : <input type="test" name="username" >
        <br><br>
        Password : <input type="password" name="pass" ><br><br>
        
