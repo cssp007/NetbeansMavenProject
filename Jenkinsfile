@@ -6,16 +6,12 @@ pipeline{
     stages{
         stage("File is exists"){
             when { expression { MY_FILE == 'true' } }
-            steps {
-                fileIsExists()
-            }
+            fileIsExists()
         }
         
         stage("File is NOT exists"){
             when { expression { MY_FILE == 'true' } }
-            steps {
                 fileIsNotExists()
-            }
         }
         
         
@@ -23,9 +19,13 @@ pipeline{
         }
 
 def fileIsExists() {
+       steps {
                 echo "file exists"
             }
+         }
     
 def fileIsNotExists() {
+    steps {
                 echo "file does not exist"
         }
+}
