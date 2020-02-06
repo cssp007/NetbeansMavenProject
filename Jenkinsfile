@@ -38,14 +38,25 @@ pipeline {
             Cheers''', cc: '', from: 'pandey.somnath007@gmail.com', replyTo: '', subject: 'Build status', to: 'pandey.somnath007@gmail.com'
         }
         failure {
-            echo 'This will run only if failed'
+            mail bcc: '', body: '''Hello Somnath,
+
+            Your code is failed.Please check and resovled the issue.
+
+            Cheers''', cc: '', from: 'pandey.somnath007@gmail.com', replyTo: '', subject: 'Build status', to: 'pandey.somnath007@gmail.com'
         }
         unstable {
-            echo 'This will run only if the run was marked as unstable'
+            mail bcc: '', body: '''Hello Somnath,
+
+            Your code unstable. 
+
+            Cheers''', cc: '', from: 'pandey.somnath007@gmail.com', replyTo: '', subject: 'Build status', to: 'pandey.somnath007@gmail.com'
         }
         changed {
-            echo 'This will run only if the state of the Pipeline has changed'
-            echo 'For example, if the Pipeline was previously failing but is now successful'
+            mail bcc: '', body: '''Hello Somnath,
+
+            Your code ran successfully now. 
+
+            Cheers''', cc: '', from: 'pandey.somnath007@gmail.com', replyTo: '', subject: 'Build status', to: 'pandey.somnath007@gmail.com'
         }
     }
 }
