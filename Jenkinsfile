@@ -13,10 +13,8 @@ pipeline{
             when { expression { MY_FILE == 'true' } }
                 fileIsNotExists()
         }
-        
-        
-        
-        }
+    }
+}    
 
 def fileIsExists() {
        steps {
