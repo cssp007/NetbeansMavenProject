@@ -1,6 +1,5 @@
 node {
-      def mvnHome = tool name: 'maven', type: 'maven'
-      
+            
       get_git_repo()
       maven_run()
       tomcat()
@@ -45,6 +44,7 @@ def get_git_repo() {
 }
 
 def maven_run() {
+      def mvnHome = tool name: 'maven', type: 'maven'
       stage("Clean Code") {
         sh "'${mvnHome}/bin/mvn' clean"
       }
