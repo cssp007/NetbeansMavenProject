@@ -8,7 +8,11 @@ pipeline {
     stages {
         stage('Check git is installed or not') {
            steps {
-               echo env.name
+               script {
+                  if (env.name == "Somnath") {
+                      echo "Working"
+                                             }
+                      }
                  }
         }
         
