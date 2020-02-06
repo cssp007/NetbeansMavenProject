@@ -36,6 +36,14 @@ pipeline {
                  }
         }
         
+        stage('Calling a function') {
+            steps {
+                script {
+                  printHelloWorld()
+                }
+            }
+        }
+        
       /*  stage('Maven Compile') { 
            steps {
               //def mvnHome = tool name: 'maven', type: 'maven'
@@ -72,4 +80,8 @@ pipeline {
             echo 'This ran successfully and change'
         }*/
     }
+}
+
+def printHelloWorld() {
+   echo "Hello World"
 }
