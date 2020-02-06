@@ -9,15 +9,12 @@ pipeline {
         stage('Check git is installed or not') {
             steps {
                 environment { 
-                DEBUG_FLAGS = '-g'
+                name = 'abc'
             }
-               /*script {
-                  if (name == "Somnath") {
+               script {
+                  if (name == "abc") {
                       echo "Hello $name"
                                             }
-                      }*/
-                steps {
-                    sh 'printenv'
                       }
                  }
                                                }
