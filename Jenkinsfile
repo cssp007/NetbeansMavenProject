@@ -2,15 +2,14 @@ pipeline {
     agent any
     stages {
         stage('Check git is installed or not') {
-           /* steps {
-                sh 'git --version'
-                  }*/
-            script {
-                def name = "Somnath"
-                if (${name} == "Somnath") {
-                    echo "Hello ${name}"
-                                      }
-                   }
+            steps {
+               script {
+                  def name = "Somnath"
+                  if (${name} == "Somnath") {
+                      echo "Hello ${name}"
+                                            }
+                      }
+                 }
                                                }
         
         stage('Maven Compile') { 
