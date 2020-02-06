@@ -12,7 +12,12 @@ pipeline {
                 script {
                   def numbers = ['a','b','c','d','e']
                     for(number in numbers) {
+                        if (number == 'a') {
+                           echo "it is A"
+                        }
+                        else {
                        echo number
+                        }
                     }
                 }
             }
