@@ -1,14 +1,10 @@
-node {   
-
-      try {
-       sh 'git --version' 
-       get_git_repo()
-       } catch (error) {
-         stage ("Cleanup after fail")
-         echo "git is NOT installed"
-         throw error
-       }
-      
+node { 
+       def git_installed = sh 'git --version' 
+            if (git_installed == True) {
+               get_git_repo()
+            }else {
+            echo "git is NOT installed"
+            }      
       maven_run()
       tomcat()
    }
