@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment { 
-        name = 'Somnath'
+        name = 'Somnat'
     }
     
     stages {
@@ -12,6 +12,9 @@ pipeline {
                   if (env.name == "Somnath") {
                       echo "Working"
                                              }
+                   else {
+                        echo "Again working"
+                        }
                       }
                  }
         }
