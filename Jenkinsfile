@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Check git is installed or not') {
             steps {
-                sh 'echo "Fail!";'
+                sh 'git --version'
             }
         }
     }
