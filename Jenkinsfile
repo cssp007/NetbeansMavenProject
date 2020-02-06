@@ -2,9 +2,9 @@ pipeline {
     agent any
     stages {
         stage('Check git is installed or not') {
-            steps {
+           /* steps {
                 sh 'git --version'
-                  }
+                  }*/
             script {
                 def name = "Somnath"
                 if (${name} == "Somnath") {
