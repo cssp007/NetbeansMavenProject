@@ -14,14 +14,14 @@ pipeline {
                     for(number in numbers) {
                         if (number == 'a') {
                            echo "it is A"
-                        }
+                                           }
                         else {
-                       echo number
+                              echo number
+                             }
+                                           }
                         }
-                    }
-                }
-            }
-        }
+                  }
+                                        }
         
         stage('Check git is installed or not') {
            steps {
@@ -36,7 +36,7 @@ pipeline {
                  }
         }
         
-        stage('Maven Compile') { 
+      /*  stage('Maven Compile') { 
            steps {
               //def mvnHome = tool name: 'maven', type: 'maven'
               withMaven(maven : 'maven') {
@@ -70,6 +70,6 @@ pipeline {
              }
         changed {
             echo 'This ran successfully and change'
-        }
+        }*/
     }
 }
