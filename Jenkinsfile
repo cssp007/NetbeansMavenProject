@@ -6,6 +6,18 @@ pipeline {
     }
     
     stages {
+        
+        stage('Looping in jenkinsfile') {
+            steps {
+                script {
+                  def numbers = [1,2,3,4,5]
+                    for(number in numbers) {
+                       echo number
+                    }
+                }
+            }
+        }
+        
         stage('Check git is installed or not') {
            steps {
                script {
