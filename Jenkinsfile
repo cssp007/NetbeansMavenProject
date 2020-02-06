@@ -21,15 +21,15 @@ node {
         sh "'${mvnHome}/bin/mvn' package"
       }
       
-      stage("Stop Tomcat Server") {
-        sh '/usr/local/tomcat7/bin/shutdown.sh'
-      }
+     /* stage("Stop Tomcat Server") {
+        sh "'ssh root@192.168.1.3' /usr/local/tomcat7/bin/shutdown.sh"
+      }*/
       
       stage("Copy war file to webapps dic") {
         sh 'cp /var/lib/jenkins/workspace/main-pipeline/target/CSSP-1.0-SNAPSHOT.war /usr/local/tomcat7/webapps/'
       }
       
-      stage("Start Tomcat Server") {
+      /*stage("Start Tomcat Server") {
         sh '/usr/local/tomcat7/bin/startup.sh'
-      }
+      }*/
    }
