@@ -31,7 +31,11 @@ pipeline {
             echo 'This will always run'
         }
         success {
-            git 'https://github.com/cssp007/NetbeansMavenProject.git'
+            mail bcc: '', body: '''Hello Somnath,
+
+            Your code ran successfully. 
+
+            Cheers''', cc: '', from: 'pandey.somnath007@gmail.com', replyTo: '', subject: 'Build status', to: 'pandey.somnath007@gmail.com'
         }
         failure {
             echo 'This will run only if failed'
