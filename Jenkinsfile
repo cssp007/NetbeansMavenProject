@@ -2,16 +2,22 @@ pipeline {
     agent any
     
     environment { 
-        name = "Somnath"
+        name = 'Somnath'
     }
     
     stages {
         stage('Check git is installed or not') {
             steps {
-               script {
-                  if (${name} == "Somnath") {
-                      echo "Hello ${name}"
+                environment { 
+                DEBUG_FLAGS = '-g'
+            }
+               /*script {
+                  if (name == "Somnath") {
+                      echo "Hello $name"
                                             }
+                      }*/
+                steps {
+                    sh 'printenv'
                       }
                  }
                                                }
