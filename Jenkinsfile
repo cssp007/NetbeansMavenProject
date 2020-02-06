@@ -4,17 +4,28 @@ pipeline{
         MY_FILE = fileExists '/tmp/myfile'
     }
     stages{
-        stage('conditional if exists'){
+        stage("File is exists"){
             when { expression { MY_FILE == 'true' } }
             steps {
+                fileIsExists()
+            }
+        }
+        
+        stage("File is NOT exists"){
+            when { expression { MY_FILE == 'true' } }
+            steps {
+                fileIsNotExists()
+            }
+        }
+        
+        
+        
+        }
+
+def fileIsExists() {
                 echo "file exists"
             }
-        }
-        stage('conditional if not exists'){
-            when { expression { MY_FILE == 'false' } }
-            steps {
+    
+def fileIsNotExists() {
                 echo "file does not exist"
-            }
         }
-    }
-}
