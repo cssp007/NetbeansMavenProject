@@ -10,7 +10,7 @@ pipeline {
         stage('Looping in jenkinsfile') {
             steps {
                 script {
-                  def numbers = [1,2,3,4,5]
+                  def int(numbers) = [1,2,3,4,5]
                     for(number in numbers) {
                        echo number
                     }
