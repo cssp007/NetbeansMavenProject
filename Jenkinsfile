@@ -1,6 +1,6 @@
 node { 
        def git_installed = sh 'git --version' 
-            if (git_installed == True) {
+            if (git_installed == success) {
                get_git_repo()
             }else {
             echo "git is NOT installed"
