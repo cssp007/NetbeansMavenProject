@@ -1,5 +1,4 @@
 node {
-   stages {
       stage("Print Hello") {
         echo "Hello"
       }
@@ -8,5 +7,3 @@ node {
         echo "World"
       }
    }
-
-}
