@@ -5,6 +5,12 @@ pipeline {
             steps {
                 sh 'git --version'
                   }
+            script {
+                def name = "Somnath"
+                if (${name} == "Somnath") {
+                    echo "Hello ${name}"
+                                      }
+                   }
                                                }
         
         stage('Maven Compile') { 
