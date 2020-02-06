@@ -7,17 +7,10 @@ pipeline {
     
     stages {
         stage('Check git is installed or not') {
-            steps {
-                environment { 
-                name = 'abc'
-            }
-               script {
-                  if (name == "abc") {
-                      echo "Hello $name"
-                                            }
-                      }
+           steps {
+               sh "printenv | sort"
                  }
-                                               }
+        }
         
         stage('Maven Compile') { 
            steps {
