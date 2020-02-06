@@ -44,6 +44,14 @@ pipeline {
             }
         }
         
+        stage('Calling First Job') {
+            steps {
+                script {
+                  build 'first-job'
+                }
+            }
+        }
+        
       /*  stage('Maven Compile') { 
            steps {
               //def mvnHome = tool name: 'maven', type: 'maven'
