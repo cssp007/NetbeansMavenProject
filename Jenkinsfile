@@ -1,10 +1,14 @@
 pipeline {
     agent any
+    
+    environment { 
+        name = "Somnath"
+    }
+    
     stages {
         stage('Check git is installed or not') {
             steps {
                script {
-                  def name = "Somnath"
                   if (${name} == "Somnath") {
                       echo "Hello ${name}"
                                             }
@@ -36,32 +40,16 @@ pipeline {
             echo 'This will always run'
         }
         success {
-            mail bcc: '', body: '''Hello Somnath,
-
-            Your code ran successfully. 
-
-            Cheers''', cc: '', from: 'pandey.somnath007@gmail.com', replyTo: '', subject: 'Build status', to: 'pandey.somnath007@gmail.com'
-        }
+            echo 'This ran successfully'
+              }
         failure {
-            mail bcc: '', body: '''Hello Somnath,
-
-            Your code is failed.Please check and resovled the issue.
-
-            Cheers''', cc: '', from: 'pandey.somnath007@gmail.com', replyTo: '', subject: 'Build status', to: 'pandey.somnath007@gmail.com'
-        }
+            echo 'This ran failed'
+             }
         unstable {
-            mail bcc: '', body: '''Hello Somnath,
-
-            Your code unstable. 
-
-            Cheers''', cc: '', from: 'pandey.somnath007@gmail.com', replyTo: '', subject: 'Build status', to: 'pandey.somnath007@gmail.com'
-        }
+            echo 'This ran unstable'
+             }
         changed {
-            mail bcc: '', body: '''Hello Somnath,
-
-            Your code ran successfully now. 
-
-            Cheers''', cc: '', from: 'pandey.somnath007@gmail.com', replyTo: '', subject: 'Build status', to: 'pandey.somnath007@gmail.com'
+            echo 'This ran successfully and change'
         }
     }
 }
