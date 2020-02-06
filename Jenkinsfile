@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Check git is installed or not') {
            steps {
-               sh "printenv | sort"
+               echo env.name
                  }
         }
         
