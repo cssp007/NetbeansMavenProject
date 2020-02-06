@@ -1,6 +1,5 @@
 node {
       def mvnHome = tool name: 'maven', type: 'maven'
-      def servers = [192.168.1.3:9090]
       
       stage("Getting Code from GitHub") {
         git 'https://github.com/cssp007/NetbeansMavenProject.git'
