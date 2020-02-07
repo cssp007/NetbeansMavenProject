@@ -3,43 +3,53 @@ pipeline {
     
     environment { 
         name = 'Somnat'
+        github_URL = 'https://github.com/cssp007/NetbeansMavenProject'
     }
     
     stages {
         
-        stage('Looping in jenkinsfile') {
+        stage('Getting Code from SCM') {
             steps {
                 script {
-                  def numbers = ['a','b','c','d','e']
-                    for(number in numbers) {
-                        if (number == 'a') {
-                           echo "it is A"
-                                           }
-                        else {
-                              echo number
-                             }
-                                           }
+                    if (env.github_URL == 'https://github.com/cssp007/NetbeansMavenProject') {
+                      getCodeFromGithub()
+                    }
+                    else {
+                      echo "github URL is NOT match"
+                    }
+                    
                         }
                   }
                                         }
         
-        stage('Check git is installed or not') {
+        stage('Clean Maven') {
            steps {
                script {
-                  if (env.name == "Somnath") {
-                      echo "Working"
-                                             }
-                   else {
-                        echo "Again working"
-                        }
+                    cleanMaven()
                       }
                  }
         }
         
-        stage('Calling a function') {
+        stage('Compile Maven') {
             steps {
                 script {
-                  printHelloWorld()
+                  compileMaven()
+                }
+            }
+        }
+        
+        stage('Test Maven') {
+            steps {
+                script {
+                  testMaven()
+                }
+            }
+        }
+        
+        stage('Package Maven') {
+            steps {
+                script {
+                  packageMaven()
                 }
             }
         }
@@ -47,7 +57,7 @@ pipeline {
         stage('Calling First Job') {
             steps {
                 script {
-                  build 'first-job'
+                  firstJob()
                 }
             }
         }
@@ -90,6 +100,34 @@ pipeline {
     }
 }
 
-def printHelloWorld() {
-   echo "Hello World"
+def firstJob() {
+   build 'first-job'
+}
+
+def getCodeFromGithub() {
+    git env.github_URL
+}
+
+def cleanMaven() {
+    withMaven(maven : 'maven') {
+          sh 'mvn clean'
+    }
+}
+
+def compileMaven() {
+    withMaven(maven : 'maven') {
+          sh 'mvn compile'
+    }
+}
+
+def testMaven() {
+    withMaven(maven : 'maven') {
+          sh 'mvn test'
+    }
+}
+
+def packageMaven() {
+    withMaven(maven : 'maven') {
+          sh 'mvn package'
+    }
 }
