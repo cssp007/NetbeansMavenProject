@@ -3,7 +3,7 @@ pipeline {
     
     environment { 
         name = 'Somnat'
-        github_URL = 'https://github.com/cssp007/NetbeansMavenProject'
+        github_URL = 'https://github.com/cssp007/NetbeansMavenProjec'
     }
     
     stages {
