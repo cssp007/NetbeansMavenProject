@@ -141,5 +141,6 @@ def packageMaven() {
 }
 
 def deployToTomcat() {
-     deploy adapters: [tomcat7(credentialsId: '6d7661b9-f009-45c2-aa06-ae5e1931881a', path: '', url: 'http://192.168.1.3:9090')], contextPath: null, war: '/target/*.war'
+     deploy adapters: [tomcat7(credentialsId: '6d7661b9-f009-45c2-aa06-ae5e1931881a', path: '', url: 'http://192.168.1.3:9090')], contextPath: null, war: 'http://192.168.1.3:8080/job/main-pipeline/lastSuccessfulBuild/artifact/com/spcs/CSSP/1.0-SNAPSHOT/CSSP-1.0-SNAPSHOT.war'
+
 }
