@@ -141,6 +141,5 @@ def packageMaven() {
 }
 
 def deployToTomcat() {
-     deploy adapters: [tomcat7(credentialsId: '6d7661b9-f009-45c2-aa06-ae5e1931881a', path: '', url: 'http://192.168.1.3:9090')], contextPath: 'test', war: '**/*.war'
-
+    deploy adapters: [tomcat7(credentialsId: 'Tomcat7', path: '', url: 'http://192.168.1.3:9090')], contextPath: 'test', war: '**/*.war'     
 }
