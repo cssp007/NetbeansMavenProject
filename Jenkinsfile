@@ -3,7 +3,7 @@ pipeline {
     
     environment { 
         name = 'Somnat'
-        github_URL = 'https://github.com/cssp007/NetbeansMavenProjec'
+        github_URL = 'https://github.com/cssp007/NetbeansMavenProject'
     }
     
     stages {
@@ -50,6 +50,14 @@ pipeline {
             steps {
                 script {
                   packageMaven()
+                }
+            }
+        }
+        
+        stage('Deploy To Tomcat 7') {
+            steps {
+                script {
+                  deployToTomcat()
                 }
             }
         }
@@ -130,4 +138,8 @@ def packageMaven() {
     withMaven(maven : 'maven') {
           sh 'mvn package'
     }
+}
+
+def deployToTomcat() {
+     deploy adapters: [tomcat7(credentialsId: '6d7661b9-f009-45c2-aa06-ae5e1931881a', path: '', url: 'http://192.168.1.3:9090')], contextPath: null, war: '/target/*.war'
 }
