@@ -15,9 +15,9 @@ pipeline {
                script {
                     def rootDir = pwd()
                     println("Current Directory: " + rootDir)
-                   // def example = load "${rootDir}@script/cssp.Groovy "
-                    //example.exampleMethod()
-                    //example.otherExampleMethod()
+                    def example = load "${rootDir}/cssp.groovy "
+                    example.exampleMethod()
+                    example.otherExampleMethod()
                       }
                  }
         }
