@@ -5,3 +5,4 @@ def exampleMethod() {
 def otherExampleMethod() {
     echo "Other Example Method"
 }  
+return this
