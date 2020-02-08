@@ -8,66 +8,30 @@ pipeline {
     
     
     
-    stages {
-        
-        stage('CSSP Groovy file') {
-           steps {
-               script {
-                    def rootDir = pwd()
-                    println("Current Directory: " + rootDir)
-                    example = load 'cssp.groovy'
-                    example.exampleMethod()
-                    example.otherExampleMethod()
-                      }
-                 }
-        }
-        
+    stages {       
         
         stage('Getting Code from SCM') {
             steps {
                 script {
-                    if (env.github_URL == 'https://github.com/cssp007/NetbeansMavenProject') {
-                      getCodeFromGithub()
-                    }
-                    else {
-                      echo "github URL is NOT match"
-                    }
+                   scmCheckOut = load 'git.groovy'  
+                   scmCheckOut.getCodeFromGithub() 
+                }
+            }
+         }
+        
+        stage('Maven steps') {
+            steps {
+                script {
+                   mavenAll = load 'maven.groovy'  
+                   mavenAll.mavenClean()
+                   mavenAll.compileMaven()
+                   mavenAll.testMaven()
+                   mavenAll.packageMaven() 
                     
-                        }
-                  }
-                                        }
-        
-        stage('Clean Maven') {
-           steps {
-               script {
-                    cleanMaven()
-                      }
-                 }
-        }
-        
-        stage('Compile Maven') {
-            steps {
-                script {
-                  compileMaven()
                 }
             }
-        }
+         }
         
-        stage('Test Maven') {
-            steps {
-                script {
-                  testMaven()
-                }
-            }
-        }
-        
-        stage('Package Maven') {
-            steps {
-                script {
-                  packageMaven()
-                }
-            }
-        }
         
         stage('Deploy To Tomcat 7') {
             steps {
@@ -77,13 +41,6 @@ pipeline {
             }
         }
         
-        stage('Calling First Job') {
-            steps {
-                script {
-                  firstJob()
-                }
-            }
-        }
         
       /*  stage('Maven Compile') { 
            steps {
@@ -123,37 +80,6 @@ pipeline {
     }
 }
 
-def firstJob() {
-   build 'first-job'
-}
-
-def getCodeFromGithub() {
-    git env.github_URL
-}
-
-def cleanMaven() {
-    withMaven(maven : 'maven') {
-          sh 'mvn clean'
-    }
-}
-
-def compileMaven() {
-    withMaven(maven : 'maven') {
-          sh 'mvn compile'
-    }
-}
-
-def testMaven() {
-    withMaven(maven : 'maven') {
-          sh 'mvn test'
-    }
-}
-
-def packageMaven() {
-    withMaven(maven : 'maven') {
-          sh 'mvn package'
-    }
-}
 
 def deployToTomcat() {
     echo "Somnath"
