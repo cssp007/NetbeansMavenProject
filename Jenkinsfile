@@ -10,7 +10,7 @@ pipeline {
     
     stages {
         
-        stage('Clean Maven') {
+        stage('CSSP Groovy file') {
            steps {
                script {
                     def rootDir = pwd()
