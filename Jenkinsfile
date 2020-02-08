@@ -6,6 +6,11 @@ pipeline {
         github_URL = 'https://github.com/cssp007/NetbeansMavenProject'
     }
     
+    def rootDir = pwd()
+    def example = load "${rootDir}@script/cssp.Groovy "
+    example.exampleMethod()
+    example.otherExampleMethod()
+    
     stages {
         
         stage('Getting Code from SCM') {
