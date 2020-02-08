@@ -156,5 +156,6 @@ def packageMaven() {
 }
 
 def deployToTomcat() {
-    deploy adapters: [tomcat7(credentialsId: 'tomcat', path: '', url: 'http://192.168.1.3:9090')], contextPath: 'test', war: '**/*.war'     
+    echo "Somnath"
+    //deploy adapters: [tomcat7(credentialsId: 'tomcat', path: '', url: 'http://192.168.1.3:9090')], contextPath: 'test', war: '**/*.war'     
 }
