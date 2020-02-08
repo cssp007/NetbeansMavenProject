@@ -21,3 +21,4 @@ def packageMaven() {
           sh 'mvn package'
     }
 }
+return this
