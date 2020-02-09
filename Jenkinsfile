@@ -32,6 +32,16 @@ pipeline {
             }
          }
         
+        stage('Calling Class') {
+            steps {
+                script {
+                    def myclass = load 'cssp.groovy'
+                    myclass.bb()
+                    myclass.tv()
+                }
+            }
+        }
+        
         
         stage('Deploy To Tomcat 7') {
             steps {
