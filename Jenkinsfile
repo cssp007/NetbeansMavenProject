@@ -35,7 +35,7 @@ pipeline {
         stage('Calling Class') {
             steps {
                 script {
-                    def myclass = load 'cssp.groovy'
+                    myclass = load 'Cssp.groovy'
                     myclass.bb()
                     myclass.tv()
                 }
