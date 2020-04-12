@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    labels:
+      run: tomcat
+    name: tomcat
+spec:
+   replicas: 2
+   selector:
+     matchLabels:
+         run: tomcat
+   template:
+      metadata:
+        labels:
+          run: tomcat
+      spec:
+        containers:
+           - image: cssp007143/custom-image
+             name:  tomcat
+        
