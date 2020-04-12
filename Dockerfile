@@ -13,9 +13,9 @@ ENV PATH=$PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin:$CATALINA_HOME/scripts
 
 # Install Tomcat
 ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.5.47
+ENV TOMCAT_VERSION 8.5.54
 
-RUN wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz && \
+RUN wget https://mirrors.koehn.com/apache/tomcat/tomcat-8/v8.5.54/bin/apache-tomcat-8.5.54.tar.gz && \
  tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
  rm apache-tomcat*.tar.gz && \
  mv apache-tomcat* ${CATALINA_HOME}
