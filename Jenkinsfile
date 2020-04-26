@@ -2,7 +2,8 @@ pipeline {
     agent any
     
     environment { 
-        github_URL = 'https://github.com/cssp007/NetbeansMavenProject'
+	maven = "/opt/maven/bin/mvn"
+        github_URL = "https://github.com/cssp007/NetbeansMavenProject"
     }
     
     
@@ -18,14 +19,10 @@ pipeline {
             }
          }
         
-        stage('Maven steps') {
+        stage('Maven build') {
             steps {
                 script {
-                   mavenAll = load 'maven.groovy'  
-                   mavenAll.mavenClean()
-                   mavenAll.compileMaven()
-                   mavenAll.testMaven()
-                   mavenAll.packageMaven() 
+                    sh "${maven} clean package"
                     
                 }
             }
