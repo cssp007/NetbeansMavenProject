@@ -38,6 +38,18 @@ pipeline {
                 }
             }
         }
+	    
+	
+	stage('Push tomcat image to Docker Hub') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'DOCKER_HUB_PASS', variable: 'DOCKER_HUB_PASS')]) {
+                    sh "docker login -u cssp007143 -p $DOCKER_HUB_PASS"
+                }
+	            sh "docker push cssp007143/custom-image"
+                }
+            }
+        }
         
         
         stage('Deploy Application in K8s Cluster') {
@@ -45,7 +57,7 @@ pipeline {
                 script {
                    kubernetesDeploy(
 				      configs: 'tomcat.yaml',
-					  kubeconfigId: 'KUBERNETES_CONFIG'
+				      kubeconfigId: 'KUBERNETES_CONFIG'
 				   ) 
                 }
             }
