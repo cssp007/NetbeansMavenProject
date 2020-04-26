@@ -2,7 +2,6 @@ pipeline {
     agent any
     
     environment { 
-        name = 'Somnat'
         github_URL = 'https://github.com/cssp007/NetbeansMavenProject'
     }
     
@@ -32,24 +31,24 @@ pipeline {
             }
          }
         
-        stage('Calling Class') {
+        stage('Creating Tomcat docker images') {
             steps {
                 script {
-                    myclass = load 'Cssp.groovy'
-                    myclass.bb()
-                    myclass.tv()
+                    sh "docker build -t cssp007143/custom-image ."
                 }
             }
         }
         
         
-        stage('Deploy To Tomcat 7') {
+        stage('Deploy Application in K8s Cluster') {
             steps {
                 script {
-                  deployToTomcat()
+                   kubernetesDeploy(
+				      configs: 'tomcat.yaml',
+					  kubeconfigId: 'KUBERNETES_CONFIG'
+				   ) 
                 }
             }
-        }
         
         
       /*  stage('Maven Compile') { 
@@ -90,8 +89,3 @@ pipeline {
     }
 }
 
-
-def deployToTomcat() {
-    echo "Somnath"
-    //deploy adapters: [tomcat7(credentialsId: 'tomcat', path: '', url: 'http://192.168.1.3:9090')], contextPath: 'test', war: '**/*.war'     
-}
