@@ -13,8 +13,7 @@ pipeline {
         stage('Getting Code from SCM') {
             steps {
                 script {
-                   scmCheckOut = load 'git.groovy'  
-                   scmCheckOut.getCodeFromGithub() 
+                  git "${github_URL}"
                 }
             }
          }
