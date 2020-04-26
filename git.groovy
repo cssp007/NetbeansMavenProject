@@ -1,5 +1,5 @@
 def getCodeFromGithub() {
-    def github_URL = 'https://github.com/cssp007/NetbeansMavenProject'
+    def github_URL = "https://github.com/cssp007/NetbeansMavenProject"
         if ('${github_URL}' == 'https://github.com/cssp007/NetbeansMavenProject') {
                  git '${github_URL}'
         }
