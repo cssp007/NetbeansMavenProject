@@ -17,4 +17,19 @@ spec:
         containers:
            - image: cssp007143/custom-image
              name:  tomcat
+             
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat
+spec:
+  type: NodePort
+  ports:
+    - nodePort: 30303
+      port: 8080
+      targetPort: 8080
+  selector:
+    run: tomcat
         
